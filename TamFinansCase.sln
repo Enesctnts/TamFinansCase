@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamFinansCase.MVC", "TamFinansCase.MVC\TamFinansCase.MVC.csproj", "{8B756148-A472-45ED-8E85-D5066EDDC282}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamFinansCase.Entites", "TamFinansCase.Entites\TamFinansCase.Entites.csproj", "{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamFinansCase.DataAccess", "TamFinansCase.DataAccess\TamFinansCase.DataAccess.csproj", "{3E93ED71-6236-4A62-A28C-1354561D27F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TamFinansCase.Business", "TamFinansCase.Business\TamFinansCase.Business.csproj", "{7D68867C-E651-45B7-BB17-C5D61E7E6A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{8B756148-A472-45ED-8E85-D5066EDDC282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B756148-A472-45ED-8E85-D5066EDDC282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B756148-A472-45ED-8E85-D5066EDDC282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E93ED71-6236-4A62-A28C-1354561D27F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E93ED71-6236-4A62-A28C-1354561D27F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E93ED71-6236-4A62-A28C-1354561D27F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E93ED71-6236-4A62-A28C-1354561D27F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D68867C-E651-45B7-BB17-C5D61E7E6A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D68867C-E651-45B7-BB17-C5D61E7E6A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D68867C-E651-45B7-BB17-C5D61E7E6A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D68867C-E651-45B7-BB17-C5D61E7E6A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

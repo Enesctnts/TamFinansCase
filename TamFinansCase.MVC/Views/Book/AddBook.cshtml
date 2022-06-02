@@ -1,0 +1,27 @@
+﻿@model TamFinansCase.Entites.Concrete.Book
+@{
+    ViewBag.Title = "AddBook";
+}
+
+<h1>Yeni Kitap Ekleme</h1>
+<br />
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Kitap Adı")
+        @Html.TextBoxFor(w => w.BookName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(w => w.BookName)
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yazar")
+        @Html.TextBoxFor(w => w.WriterName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(w => w.WriterName)
+        <br />
+        <br />
+        <button class="btn btn-info">Kitap Oluştur</button>
+
+    </div>
+}
+
