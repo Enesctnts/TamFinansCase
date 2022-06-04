@@ -15,14 +15,19 @@ namespace TamFinansCase.Entites.Concrete
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order =1)]
         public int BookId { get; set; }
+
+        [Required]
+        [Column(Order = 2)]
         public int CategoryId { get; set; }
 
         [Display(Name = "Kitap İsmi")]
         [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Kitap ismi en az 2 en fazla 30 aralığında olmalıdır.")]
+        [Required]
         public string BookName { get; set; }
 
         [Display(Name = "Yazar İsmi")]
         [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Yazar ismi en az 2 en fazla 30 aralığında olmalıdır.")]
+        [Required]
         public string WriterName { get; set; }
         public bool BookStatus { get; set; } = true;
 
