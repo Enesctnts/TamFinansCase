@@ -24,8 +24,7 @@ namespace TamFinansCase.Business.Concrete
         }
         public void Delete(Book book)
         {
-            book.IsDeleted = true;
-
+            book.BookStatus = false;
             _bookDal.Delete(book);
 
         }
