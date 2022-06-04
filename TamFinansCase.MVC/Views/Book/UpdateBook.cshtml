@@ -15,57 +15,44 @@
         }))
 {
     @Html.AntiForgeryToken()
-        <div class="col-md-6 offset-3">
-           
-            <div class="form-group">
-                @Html.HiddenFor(x => x.BookStatus)
-                @Html.HiddenFor(x => x.BookId)
+    <div class="col-md-6 offset-3">
 
-                @Html.LabelFor(x => x.BookName)
-                @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                @Html.Label("Kategori")
-                @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group">
+            @Html.HiddenFor(x => x.BookStatus)
+            @Html.HiddenFor(x => x.BookId)
 
-            <div class="form-group">
-                @Html.LabelFor(x => x.WriterName)
-                @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
-            </div>
-
-            <button class="btn btn-info" style="float:right">Güncelle</button>
-            <br>
-            <div>
-                @Html.ActionLink("Listeye Geri Dön", "GetList", "Book")
-            </div>
-
-
+            @Html.LabelFor(x => x.BookName)
+            @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
         </div>
-    }
+        <div class="form-group">
+            @Html.Label("Kategori")
+            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, "Kategori Seçiniz", new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
+        </div>
 
-@*@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post))
-{
+        <div class="form-group">
+            @Html.LabelFor(x => x.WriterName)
+            @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="form-group">
-        @Html.Label("Book ID")
-        @Html.TextBoxFor(x => x.BookId, new { @class = "form-control" })
-        <br />
-        @Html.LabelFor(x => x.BookName)@Html.Label("Kitap Ad")
-        @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
-        <br />
-        @Html.Label("Yazar Ad")
-        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
-        <br />
-        @Html.Label("Status")
-        @Html.TextBoxFor(x => x.BookStatus, new { @class = "form-control" })
-        <br />
-        @Html.Label("Kategori")
-        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
-        <br />
-        <button class="btn btn-success">Güncelle</button>
+        <button class="btn btn-info" id="btn1" style="float:right">Güncelle</button>
+        <br>
+        <div>
+            @Html.ActionLink("Listeye Geri Dön", "GetList", "Book")
+        </div>
+
+
     </div>
-}*@
+
+    <script>
+        $('#btn1').click(function () {
+            swal("Tebriklerr!", "Başarılı bir şekilde güncellendi!", "success");
+        })
+    </script>
+
+
+}
+
+
