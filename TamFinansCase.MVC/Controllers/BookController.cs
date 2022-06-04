@@ -25,17 +25,10 @@ namespace TamFinansCase.MVC.Controllers
         [HttpGet]
         public ActionResult AddBook()
         {
-            List<SelectListItem> valuecategory = (from x in categoryManager.List()
-                                                  select new SelectListItem
-                                                  {
-                                                      Text = x.CategoryName,
-                                                      Value = x.CategoryId.ToString()
-
-                                                  }).ToList();
-            ViewBag.vlc = valuecategory;
-
+            //Tüm Kategorileri DropDownListe getirebilmek için GetCategories metodu yazılmıştır.
+            //GetCategories metodu en alttadır.
+            ViewBag.vlc = GetCategories();
             return View();
-
         }
 
         [HttpPost]
@@ -44,15 +37,7 @@ namespace TamFinansCase.MVC.Controllers
         {
             try
             {
-                List<SelectListItem> valuecategory = (from x in categoryManager.List()
-                                                      select new SelectListItem
-                                                      {
-                                                          Text = x.CategoryName,
-                                                          Value = x.CategoryId.ToString()
-
-                                                      }).ToList();
-                ViewBag.vlc = valuecategory;
-
+                ViewBag.vlc = GetCategories();
 
                 if (!ModelState.IsValid)
                 {
@@ -60,15 +45,10 @@ namespace TamFinansCase.MVC.Controllers
                     return View(book);
                 }
 
-                if (book.CategoryId <= 0)
-                {
-                    ModelState.AddModelError("", "Ürüne ait kategori seçilmelidir");
-                    return View(book);
-                }
-
                 bookManager.Insert(book);
+                System.Threading.Thread.Sleep(1000);//Alert mesajı gözükmesi için 1 sn bekle
                 return RedirectToAction("GetList");
-                
+
             }
             catch (Exception ex)
             {
@@ -76,7 +56,7 @@ namespace TamFinansCase.MVC.Controllers
                 ModelState.AddModelError("", "Beklenmedik hata oluştu!");
                 return View(book);
             }
-            
+
         }
 
         public ActionResult DeleteBook(int id)
@@ -89,14 +69,7 @@ namespace TamFinansCase.MVC.Controllers
         [HttpGet]
         public ActionResult UpdateBook(int id)
         {
-
-            List<SelectListItem> valuecategory = (from x in categoryManager.List()
-                                                  select new SelectListItem
-                                                  {
-                                                      Text = x.CategoryName,
-                                                      Value = x.CategoryId.ToString()
-                                                  }).ToList();
-            ViewBag.vlc = valuecategory;
+            ViewBag.vlc = GetCategories();
             var result = bookManager.GetById(id);
             return View(result);
         }
@@ -107,14 +80,7 @@ namespace TamFinansCase.MVC.Controllers
         {
             try
             {
-                //List<SelectListItem> valuecategory = (from x in categoryManager.List()
-                //                                      select new SelectListItem
-                //                                      {
-                //                                          Text = x.CategoryName,
-                //                                          Value = x.CategoryId.ToString()
-                //                                      }).ToList();
-                //ViewBag.vlc = valuecategory;
-                GetSubCategories();
+                ViewBag.vlc = GetCategories();
 
                 if (!ModelState.IsValid)
                 {
@@ -122,13 +88,8 @@ namespace TamFinansCase.MVC.Controllers
                     return View(book);
                 }
 
-                if (book.CategoryId <= 0)
-                {
-                    ModelState.AddModelError("", "Ürüne ait kategori seçilmelidir");
-                    return View(book);
-                }
-
                 bookManager.Update(book);
+                System.Threading.Thread.Sleep(1000);//Alert mesajı gözükmesi için 1 sn bekle
                 return RedirectToAction("GetList");
 
             }
@@ -141,19 +102,16 @@ namespace TamFinansCase.MVC.Controllers
 
         }
 
-        public List<SelectListItem> GetSubCategories()
+        //Tüm Kategorileri DropDownListe getirebilmek için GetCategories metodu yazılmıştır.
+        public List<SelectListItem> GetCategories()
         {
-            List<SelectListItem> valuecategory = (from x in categoryManager.List()
+            List<SelectListItem> valuecategory = (from x in categoryManager.List().Where(x=>x.CategoryStatus==true)
                                                   select new SelectListItem
                                                   {
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryId.ToString()
                                                   }).ToList();
-            ViewBag.vlc = valuecategory;
             return valuecategory;
-
         }
     }
-
-
 }
