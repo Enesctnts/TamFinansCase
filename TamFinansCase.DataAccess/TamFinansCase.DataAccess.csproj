@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202206041201575_InitializeDb.designer.cs">
       <DependentUpon>202206041201575_InitializeDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206042211450_CategoryUpdate.cs" />
+    <Compile Include="Migrations\202206042211450_CategoryUpdate.designer.cs">
+      <DependentUpon>202206042211450_CategoryUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206041201575_InitializeDb.resx">
       <DependentUpon>202206041201575_InitializeDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206042211450_CategoryUpdate.resx">
+      <DependentUpon>202206042211450_CategoryUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
