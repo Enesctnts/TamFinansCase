@@ -7,13 +7,13 @@ namespace TamFinansCase.DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Refactoringg : IMigrationMetadata
+    public sealed partial class InitializeDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Refactoringg));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitializeDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202206032337202_Refactoringg"; }
+            get { return "202206041201575_InitializeDb"; }
         }
         
         string IMigrationMetadata.Source
