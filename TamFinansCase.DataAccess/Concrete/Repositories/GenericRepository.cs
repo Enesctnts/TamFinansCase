@@ -12,30 +12,28 @@ namespace TamFinansCase.DataAccess.Concrete.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class, IEntity, new()
     {
-        Context c = new Context();
+        Context context = new Context();
         DbSet<T> _object;
 
         public GenericRepository()
         {
-            _object = c.Set<T>();
+            _object = context.Set<T>();
         }
         public void Delete(T t)
         {
-            c.SaveChanges();
+            context.SaveChanges();
         }
 
         public T Get(Expression<Func<T, bool>> filter)
         {
-            return _object.SingleOrDefault(filter); //Tek değer döndürmek için kullanılır
+            return _object.SingleOrDefault(filter); 
         }
 
         public void Insert(T t)
         {
-            var addedEntity = c.Entry(t);
+            var addedEntity = context.Entry(t);
             addedEntity.State = EntityState.Added;
-            c.SaveChanges();
-            //_object.Add(t);
-            //c.SaveChanges();
+            context.SaveChanges();
         }
 
         public List<T> List()
@@ -50,9 +48,9 @@ namespace TamFinansCase.DataAccess.Concrete.Repositories
 
         public void Update(T t)
         {
-            var editedEntity = c.Entry(t);
+            var editedEntity = context.Entry(t);
             editedEntity.State = EntityState.Modified;
-            c.SaveChanges();
+            context.SaveChanges();
         }
     }
 }
