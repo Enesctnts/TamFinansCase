@@ -64,6 +64,18 @@
     <Compile Include="Migrations\202206021922460_DbInitialize.designer.cs">
       <DependentUpon>202206021922460_DbInitialize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206032011038_BookRefactoring.cs" />
+    <Compile Include="Migrations\202206032011038_BookRefactoring.designer.cs">
+      <DependentUpon>202206032011038_BookRefactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206032337202_Refactoringg.cs" />
+    <Compile Include="Migrations\202206032337202_Refactoringg.designer.cs">
+      <DependentUpon>202206032337202_Refactoringg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202206032339249_Refactoring.cs" />
+    <Compile Include="Migrations\202206032339249_Refactoring.designer.cs">
+      <DependentUpon>202206032339249_Refactoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +93,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202206021922460_DbInitialize.resx">
       <DependentUpon>202206021922460_DbInitialize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206032011038_BookRefactoring.resx">
+      <DependentUpon>202206032011038_BookRefactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206032337202_Refactoringg.resx">
+      <DependentUpon>202206032337202_Refactoringg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206032339249_Refactoring.resx">
+      <DependentUpon>202206032339249_Refactoring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
