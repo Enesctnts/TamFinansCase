@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using TamFinansCase.Business.Concrete;
 using TamFinansCase.DataAccess.EntityFramework;
 using TamFinansCase.Entites.Concrete;
-using TamFinansCase.MVC.Models;
 
 namespace TamFinansCase.MVC.Controllers
 {
@@ -45,6 +44,16 @@ namespace TamFinansCase.MVC.Controllers
         {
             try
             {
+                List<SelectListItem> valuecategory = (from x in categoryManager.List()
+                                                      select new SelectListItem
+                                                      {
+                                                          Text = x.CategoryName,
+                                                          Value = x.CategoryId.ToString()
+
+                                                      }).ToList();
+                ViewBag.vlc = valuecategory;
+
+
                 if (!ModelState.IsValid)
                 {
                     ModelState.AddModelError("", "Kitap girişleri düzgün olmalıdır");
@@ -98,13 +107,14 @@ namespace TamFinansCase.MVC.Controllers
         {
             try
             {
-                List<SelectListItem> valuecategory = (from x in categoryManager.List()
-                                                      select new SelectListItem
-                                                      {
-                                                          Text = x.CategoryName,
-                                                          Value = x.CategoryId.ToString()
-                                                      }).ToList();
-                ViewBag.vlc = valuecategory;
+                //List<SelectListItem> valuecategory = (from x in categoryManager.List()
+                //                                      select new SelectListItem
+                //                                      {
+                //                                          Text = x.CategoryName,
+                //                                          Value = x.CategoryId.ToString()
+                //                                      }).ToList();
+                //ViewBag.vlc = valuecategory;
+                GetSubCategories();
 
                 if (!ModelState.IsValid)
                 {
@@ -129,9 +139,21 @@ namespace TamFinansCase.MVC.Controllers
                 return View(book);
             }
 
-
         }
 
+        public List<SelectListItem> GetSubCategories()
+        {
+            List<SelectListItem> valuecategory = (from x in categoryManager.List()
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.CategoryName,
+                                                      Value = x.CategoryId.ToString()
+                                                  }).ToList();
+            ViewBag.vlc = valuecategory;
+            return valuecategory;
 
+        }
     }
+
+
 }
