@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TamFinansCase.DataAccess.Concrete;
+using TamFinansCase.Entites.Concrete;
 
 namespace TamFinansCase.MVC.Controllers
 {
@@ -20,22 +21,25 @@ namespace TamFinansCase.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserLogin(string email, string password)
+        public ActionResult UserLogin(User model)
         {
             Context context = new Context();
-            var userInfo = context.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
-            if (userInfo != null)
-            {
-                FormsAuthentication.SetAuthCookie(userInfo.Email, false);
-                Session["Email"] = userInfo.Email;
-                return RedirectToAction("GetList", "Book");
-
-            }
-            else
+            var userInfo = context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+            if (userInfo == null)
             {
                 return View("UserLogin");
-
             }
+
+            FormsAuthentication.SetAuthCookie(userInfo.Email, false);
+            Session["Email"] = userInfo.Email;
+            return RedirectToAction("GetList", "Book");
+
+        }
+
+        public ActionResult LogOut(User model)
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("UserLogin", "Login");
         }
     }
 }
