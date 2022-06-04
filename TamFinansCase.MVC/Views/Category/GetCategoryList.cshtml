@@ -1,0 +1,31 @@
+﻿@using TamFinansCase.Entites.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "GetCategoryList";
+    Layout = "~/Views/Shared/_TamLayout.cshtml";
+}
+
+<h3>Tüm Kategoriler</h3>
+<br />
+<a href="/Category/AddCategory" class="btn btn-info" style="float:inline-start">Yeni Kategori</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori Id</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+    }
+</table>
+
