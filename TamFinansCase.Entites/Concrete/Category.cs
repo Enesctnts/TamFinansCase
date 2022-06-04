@@ -12,7 +12,6 @@ namespace TamFinansCase.Entites.Concrete
     [Table("Categories")]
     public class Category : IEntity
     {
-        
         [Key]
         public int CategoryId { get; set; }
 
@@ -21,7 +20,7 @@ namespace TamFinansCase.Entites.Concrete
         [StringLength(maximumLength:30,MinimumLength =2,ErrorMessage ="Kategori ismi en az 2 en fazla 30 aralığında olmalıdır.")]
         public string CategoryName { get; set; }
 
-
+        public bool CategoryStatus { get; set; } = true;
         public virtual ICollection<Book> Books { get; set; }
     }
 }
