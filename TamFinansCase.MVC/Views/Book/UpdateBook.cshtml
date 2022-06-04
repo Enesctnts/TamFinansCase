@@ -16,10 +16,11 @@
 {
     @Html.AntiForgeryToken()
         <div class="col-md-6 offset-3">
-            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+           
             <div class="form-group">
                 @Html.HiddenFor(x => x.BookStatus)
                 @Html.HiddenFor(x => x.BookId)
+
                 @Html.LabelFor(x => x.BookName)
                 @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
@@ -27,6 +28,7 @@
             <div class="form-group">
                 @Html.Label("Kategori")
                 @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CategoryId, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
