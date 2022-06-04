@@ -24,6 +24,7 @@ namespace TamFinansCase.Business.Concrete
         }
         public void Delete(Category category)
         {
+            category.CategoryStatus = false;
             _categoryDal.Delete(category);
         }
         public void Update(Category category)
