@@ -7,6 +7,8 @@
 <html>
 <title>- Tam Finans -</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -18,9 +20,9 @@
         <h3 class="w3-bar-item">Menüler</h3>
         <a href="/Book/GetList/" class="w3-bar-item w3-button">Kitap Listesi</a>
         <a href="/Book/AddBook/" class="w3-bar-item w3-button">Kitap Ekle</a>
-        <a href="/Category/GetList/" class="w3-bar-item w3-button">Kategoriler</a>
+        <a href="/Category/GetCategoryList/" class="w3-bar-item w3-button">Kategori Listesi</a>
         <a href="/Category/AddCategory/" class="w3-bar-item w3-button">Kategori Ekle</a>
-        <a href="/Login/LogOut" class="w3-bar-item w3-button">Çıkış Yap</a>
+        <a href="/Login/LogOut" id="btn1" class="w3-bar-item w3-button">Çıkış Yap</a>
     </div>
 
     <!-- Page Content -->
@@ -30,7 +32,6 @@
             <h4>Yönetim Paneli</h4>
         </div>
 
-        
         <div class="w3-container">
             @RenderBody()
         </div>
@@ -39,5 +40,11 @@
 
 </body>
 </html>
+
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Çıkış yapılıyor!");
+    })
+</script>
 
 
