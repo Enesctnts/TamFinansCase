@@ -24,7 +24,7 @@ namespace TamFinansCase.Entites.Concrete
         [Display(Name = "Yazar İsmi")]
         [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Yazar ismi en az 2 en fazla 30 aralığında olmalıdır.")]
         public string WriterName { get; set; }
-        public bool IsDeleted { get; set; } = false;
+        public bool BookStatus { get; set; } = true;
 
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
