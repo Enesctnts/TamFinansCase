@@ -12,9 +12,10 @@ namespace TamFinansCase.Entites.Concrete
     [Table("Categories")]
     public class Category : IEntity
     {
-        [Required]
+        
         [Key]
         public int CategoryId { get; set; }
+
         [Required]
         [Display(Name ="Kategori İsmi")]
         [StringLength(maximumLength:30,MinimumLength =2,ErrorMessage ="Kategori ismi en az 2 en fazla 30 aralığında olmalıdır.")]
