@@ -1,0 +1,41 @@
+﻿@model TamFinansCase.Entites.Concrete.Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Views/Shared/_TamLayout.cshtml";
+}
+<h3>Kitap Güncelleme Sayfası</h3>
+<br />
+
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post,
+        new
+        {
+            @class = "form-horizontal",
+            enctype = "multipart/form-data"
+        }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-6 offset-3">
+
+        <div class="form-group">
+            @Html.HiddenFor(x => x.CategoryId)
+            @Html.HiddenFor(x => x.CategoryStatus)
+
+            @Html.LabelFor(x => x.CategoryName)
+            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryName, "", new { @class = "text-danger" })
+        </div>
+
+        <button class="btn btn-info" id="btn1" style="float:right">Güncelle</button>
+        <br>
+        <div>
+            @Html.ActionLink("Listeye Geri Dön", "GetCategoryList", "Category")
+        </div>
+
+    </div>
+
+    <script>
+        $('#btn1').click(function () {
+            swal("Tebriklerr!", "Başarılı bir şekilde eklendi!", "success");
+        })
+    </script>
+}
