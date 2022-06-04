@@ -1,29 +1,69 @@
 ﻿@model TamFinansCase.Entites.Concrete.Book
 @{
     ViewBag.Title = "UpdateBook";
+    Layout = "~/Views/Shared/_TamLayout.cshtml";
 }
 
-<h2>Kitap Güncelleme Sayfası</h2>
+<h3>Kitap Güncelleme Sayfası</h3>
+<br />
 
-@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post))
+@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post,
+        new
+        {
+            @class = "form-horizontal",
+            enctype = "multipart/form-data"
+        }))
+{
+    @Html.AntiForgeryToken()
+        <div class="col-md-6 offset-3">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.HiddenFor(x => x.BookStatus)
+                @Html.HiddenFor(x => x.BookId)
+                @Html.LabelFor(x => x.BookName)
+                @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Kategori")
+                @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.WriterName)
+                @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+            </div>
+
+            <button class="btn btn-info" style="float:right">Güncelle</button>
+            <br>
+            <div>
+                @Html.ActionLink("Listeye Geri Dön", "GetList", "Book")
+            </div>
+
+
+        </div>
+    }
+
+@*@using (Html.BeginForm("UpdateBook", "Book", FormMethod.Post))
 {
 
-<div class="form-group">
-    @Html.HiddenFor(x => x.BookId)
-    @Html.HiddenFor(x => x.IsDeleted)
-   
-    @Html.Label("Kitap Adı", new { @class = "form-control" })
-    @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
-    <br />
-    @Html.Label("Yazar Adı", new { @class = "form-control" })
-    @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
-    <br />
-    @Html.Label("Kategori", new { @class = "form-control" })
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-success">Güncelle</button>
-</div>
-}
-
+    <div class="form-group">
+        @Html.Label("Book ID")
+        @Html.TextBoxFor(x => x.BookId, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(x => x.BookName)@Html.Label("Kitap Ad")
+        @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yazar Ad")
+        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Status")
+        @Html.TextBoxFor(x => x.BookStatus, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}*@

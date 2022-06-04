@@ -1,27 +1,68 @@
 ﻿@model TamFinansCase.Entites.Concrete.Book
 @{
     ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/_TamLayout.cshtml";
 }
 
-<h1>Yeni Kitap Ekleme</h1>
+<h3>Yeni Kitap Ekleme</h3>
 <br />
-@using (Html.BeginForm("AddBook", "Book", FormMethod.Post))
+
+@using (Html.BeginForm("AddBook", "Book", FormMethod.Post,
+    new
+    {
+        @class = "form-horizontal",
+        enctype = "multipart/form-data"
+    }))
 {
+    @Html.AntiForgeryToken()
+<div class="col-md-6 offset-3">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.Label("Kitap Adı")
+        @Html.LabelFor(x => x.BookName)
+        @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BookName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.WriterName)
+        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-info" style="float:right">
+            Kitap Oluştur
+        </button>
+        @Html.ActionLink("Listeye Geri Dön", "GetList", "Book")
+    </div>
+
+
+
+</div>
+}
+
+
+
+
+@*<form class="form-group" method="post">
+
+        @Html.LabelFor(x => x.BookName)
         @Html.TextBoxFor(w => w.BookName, new { @class = "form-control" })
         @Html.ValidationMessageFor(w => w.BookName)
         <br />
-        @Html.Label("Kategori")
+        @Html.LabelFor(x => x.Category.CategoryName)
         @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
         <br />
-        @Html.Label("Yazar")
+        @Html.LabelFor(x => x.WriterName)
         @Html.TextBoxFor(w => w.WriterName, new { @class = "form-control" })
         @Html.ValidationMessageFor(w => w.WriterName)
         <br />
         <br />
-        <button class="btn btn-info">Kitap Oluştur</button>
+        <button class="btn btn-primary">Kitap Oluştur</button>
 
-    </div>
-}
+    </form>*@
+
 
