@@ -39,6 +39,7 @@ namespace TamFinansCase.MVC.Controllers
         public ActionResult LogOut(User model)
         {
             FormsAuthentication.SignOut();
+            System.Threading.Thread.Sleep(1000);//Alert mesajı gözükmesi için 1 sn bekle
             return RedirectToAction("UserLogin", "Login");
         }
     }
