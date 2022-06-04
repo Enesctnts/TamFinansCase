@@ -10,21 +10,20 @@ namespace TamFinansCase.Entites.Concrete
 {
     public class User : IEntity
     {
+        [Key]
         public int UserId { get; set; }
 
-        [Display(Name = "Kullanıcı İsmi")]
-        [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Kullanıcı ismi en az 2 en fazla 30 aralığında olmalıdır.")]
+        [StringLength(maximumLength: 30, MinimumLength = 2)]
+        [Required]
         public string UserName { get; set; }
 
         [Required]
-        [Display(Name = "Email İsmi")]
-        [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Email ismi en az 2 en fazla 30 aralığında olmalıdır.")]
-        [EmailAddress(ErrorMessage ="Lütfen email adresini giriniz")]
+        [StringLength(maximumLength: 30)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Email İsmi")]
-        [StringLength(maximumLength: 30, MinimumLength = 2, ErrorMessage = "Kitap ismi en az 2 en fazla 30 aralığında olmalıdır.")]
+        [StringLength(maximumLength: 30, MinimumLength = 2)]
         public string Password { get; set; }
 
 
