@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using TamFinansCase.Business.Concrete;
 using TamFinansCase.DataAccess.EntityFramework;
 using TamFinansCase.Entites.Concrete;
+using TamFinansCase.MVC.Models;
 
 namespace TamFinansCase.MVC.Controllers
 {
@@ -16,22 +17,12 @@ namespace TamFinansCase.MVC.Controllers
         BookManager bookManager = new BookManager(new EfBookDal());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
 
-        // GET: Book
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-
-        //[Authorize]
         public ActionResult GetList()
         {
-            var bookValues = bookManager.List();
-            var values = bookValues.Where(x => x.IsDeleted == false).ToList();
-            return View(values);
+            var bookValues = bookManager.List().Where(x => x.BookStatus == true).ToList();
+            return View(bookValues);
         }
 
-        //[Authorize]
         [HttpGet]
         public ActionResult AddBook()
         {
@@ -40,29 +31,45 @@ namespace TamFinansCase.MVC.Controllers
                                                   {
                                                       Text = x.CategoryName,
                                                       Value = x.CategoryId.ToString()
+
                                                   }).ToList();
             ViewBag.vlc = valuecategory;
-            return View(); 
+
+            return View();
+
         }
 
-        //[Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddBook(Book book)
         {
-            
-            if (!ModelState.IsValid) 
+            try
             {
-                ModelState.AddModelError("", "Kitap girişleri düzgün olmalıdır");
+                if (!ModelState.IsValid)
+                {
+                    ModelState.AddModelError("", "Kitap girişleri düzgün olmalıdır");
+                    return View(book);
+                }
+
+                if (book.CategoryId <= 0)
+                {
+                    ModelState.AddModelError("", "Ürüne ait kategori seçilmelidir");
+                    return View(book);
+                }
+
+                bookManager.Insert(book);
+                return RedirectToAction("GetList");
+                
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("", "Beklenmedik hata oluştu!");
                 return View(book);
             }
-
-            bookManager.Insert(book);
-            return RedirectToAction("GetList");
-
-          
+            
         }
 
-        //[Authorize]
         public ActionResult DeleteBook(int id)
         {
             var result = bookManager.GetById(id);
@@ -70,11 +77,9 @@ namespace TamFinansCase.MVC.Controllers
             return RedirectToAction("GetList");
         }
 
-        //[Authorize]
         [HttpGet]
         public ActionResult UpdateBook(int id)
         {
-
 
             List<SelectListItem> valuecategory = (from x in categoryManager.List()
                                                   select new SelectListItem
@@ -87,28 +92,46 @@ namespace TamFinansCase.MVC.Controllers
             return View(result);
         }
 
-        //[Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UpdateBook(Book book)
         {
-
-            if (!ModelState.IsValid)
+            try
             {
+                List<SelectListItem> valuecategory = (from x in categoryManager.List()
+                                                      select new SelectListItem
+                                                      {
+                                                          Text = x.CategoryName,
+                                                          Value = x.CategoryId.ToString()
+                                                      }).ToList();
+                ViewBag.vlc = valuecategory;
+
+                if (!ModelState.IsValid)
+                {
+                    ModelState.AddModelError("", "Kitap girişleri düzgün olmalıdır");
+                    return View(book);
+                }
+
+                if (book.CategoryId <= 0)
+                {
+                    ModelState.AddModelError("", "Ürüne ait kategori seçilmelidir");
+                    return View(book);
+                }
+
                 bookManager.Update(book);
                 return RedirectToAction("GetList");
 
-               
             }
-            else
+            catch (Exception ex)
             {
-                ModelState.AddModelError("", "Kitap girişleri düzgün olmalıdır");
-            }
 
-            return View();
-           
-            
+                ModelState.AddModelError("", "Beklenmedik hata oluştu!");
+                return View(book);
+            }
 
 
         }
+
+
     }
 }
