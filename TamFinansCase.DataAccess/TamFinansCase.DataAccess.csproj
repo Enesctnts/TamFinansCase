@@ -60,21 +60,9 @@
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfUserDal.cs" />
     <Compile Include="EntityFramework\EfBookDal.cs" />
-    <Compile Include="Migrations\202206021922460_DbInitialize.cs" />
-    <Compile Include="Migrations\202206021922460_DbInitialize.designer.cs">
-      <DependentUpon>202206021922460_DbInitialize.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206032011038_BookRefactoring.cs" />
-    <Compile Include="Migrations\202206032011038_BookRefactoring.designer.cs">
-      <DependentUpon>202206032011038_BookRefactoring.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206032337202_Refactoringg.cs" />
-    <Compile Include="Migrations\202206032337202_Refactoringg.designer.cs">
-      <DependentUpon>202206032337202_Refactoringg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202206032339249_Refactoring.cs" />
-    <Compile Include="Migrations\202206032339249_Refactoring.designer.cs">
-      <DependentUpon>202206032339249_Refactoring.cs</DependentUpon>
+    <Compile Include="Migrations\202206041201575_InitializeDb.cs" />
+    <Compile Include="Migrations\202206041201575_InitializeDb.designer.cs">
+      <DependentUpon>202206041201575_InitializeDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,26 +71,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202206041201575_InitializeDb.resx">
+      <DependentUpon>202206041201575_InitializeDb.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TamFinansCase.Entites\TamFinansCase.Entites.csproj">
       <Project>{40769CF2-6BDF-456C-B9CE-7C37A4D623F5}</Project>
       <Name>TamFinansCase.Entites</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202206021922460_DbInitialize.resx">
-      <DependentUpon>202206021922460_DbInitialize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206032011038_BookRefactoring.resx">
-      <DependentUpon>202206032011038_BookRefactoring.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206032337202_Refactoringg.resx">
-      <DependentUpon>202206032337202_Refactoringg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202206032339249_Refactoring.resx">
-      <DependentUpon>202206032339249_Refactoring.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
