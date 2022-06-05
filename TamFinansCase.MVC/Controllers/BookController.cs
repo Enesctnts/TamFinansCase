@@ -18,7 +18,7 @@ namespace TamFinansCase.MVC.Controllers
 
         public ActionResult GetList()
         {
-            var bookValues = bookManager.List().Where(x => x.BookStatus == true).ToList();
+            var bookValues = bookManager.List().Where(x => x.BookStatus == true && x.Category.CategoryStatus==true).ToList();
             return View(bookValues);
         }
 
