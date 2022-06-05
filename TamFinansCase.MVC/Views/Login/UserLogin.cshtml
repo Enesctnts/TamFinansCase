@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -31,6 +30,7 @@
                         <h3 class="mb-4 text-center">Bir Hesabın Var Mı</h3>
                         @using (Html.BeginForm("UserLogin", "Login", FormMethod.Post))
                         {
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                             <div class="form-group">
                                 <input type="text" class="form-control" name="Email" placeholder="Mail Adresin" required>
                             </div>
