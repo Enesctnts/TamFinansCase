@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202206042211450_CategoryUpdate.designer.cs">
       <DependentUpon>202206042211450_CategoryUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202206050943523_UserUpdate.cs" />
+    <Compile Include="Migrations\202206050943523_UserUpdate.designer.cs">
+      <DependentUpon>202206050943523_UserUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202206042211450_CategoryUpdate.resx">
       <DependentUpon>202206042211450_CategoryUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202206050943523_UserUpdate.resx">
+      <DependentUpon>202206050943523_UserUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
