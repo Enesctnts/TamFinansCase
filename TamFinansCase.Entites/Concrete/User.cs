@@ -14,7 +14,6 @@ namespace TamFinansCase.Entites.Concrete
         public int UserId { get; set; }
 
         [StringLength(maximumLength: 30, MinimumLength = 2)]
-        [Required]
         public string UserName { get; set; }
 
         [Required]
