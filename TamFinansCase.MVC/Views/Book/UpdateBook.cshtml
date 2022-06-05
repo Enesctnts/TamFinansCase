@@ -37,7 +37,7 @@
             @Html.ValidationMessageFor(x => x.WriterName, "", new { @class = "text-danger" })
         </div>
 
-        <button class="btn btn-info" id="btn1" style="float:right">Güncelle</button>
+        <button class="btn btn-info" id="btn2" style="float:right">Güncelle</button>
         <br>
         <div>
             @Html.ActionLink("Listeye Geri Dön", "GetList", "Book")
@@ -47,7 +47,7 @@
     </div>
 
     <script>
-        $('#btn1').click(function () {
+        $('#btn2').click(function () {
             swal("Tebriklerr!", "Başarılı bir şekilde güncellendi!", "success");
         })
     </script>
