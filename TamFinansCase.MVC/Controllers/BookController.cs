@@ -52,7 +52,6 @@ namespace TamFinansCase.MVC.Controllers
             }
             catch (Exception ex)
             {
-
                 ModelState.AddModelError("", "Beklenmedik hata oluştu!");
                 return View(book);
             }
