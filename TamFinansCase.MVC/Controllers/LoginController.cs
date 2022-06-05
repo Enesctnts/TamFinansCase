@@ -12,21 +12,28 @@ namespace TamFinansCase.MVC.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-        // GET: Login
+        
 
         [HttpGet]
         public ActionResult UserLogin()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult UserLogin(User model)
         {
             Context context = new Context();
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
             var userInfo = context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+
             if (userInfo == null)
             {
+                ModelState.AddModelError("", "Emailinizi yada şifrenizi yanlış girdiniz!");
                 return View("UserLogin");
             }
 
